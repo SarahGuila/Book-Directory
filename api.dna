@@ -1,0 +1,4 @@
+---GET /Books -> retrieves all the books 
+---POST /BookName{bookName, author} -> adds a new book
+---PUT /BookName {bookName, author} ->updates an old book
+---DELETE /BookName {bookName, author} ->removes a book
