@@ -21,7 +21,6 @@ app.post('/api/newBook', async (req,res) => {
     try {
         const {bookName,hauther} = (req.body)
         const newBook = new Book({bookName,hauther})
-        //mongoose.model('book').findOne({bookName}),async function (err, result) {
         const exist = await Book.findOne({bookName,hauther})
         if (!exist) {
             await newBook.save()
@@ -33,4 +32,16 @@ app.post('/api/newBook', async (req,res) => {
         res.status(500).send({ message: "cannot save book" })
     }
 })
+
+
+app.delete('/api/remove/:_id', async (req, res) => {
+    try {
+        const id = req.params._id
+        await Book.findByIdAndDelete(id)
+        res.send({msg:'Book with id: ' + id + ' was deleted'}) 
+    }catch (error) {
+        res.status(500).send({ error})
+    }
+})
+
 app.listen(8080, _ => console.log('server is up and runing on port 8080'))
