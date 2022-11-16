@@ -6,4 +6,4 @@ const booksSchema = new mongoose.Schema({
     hauther : String
 })
 
-module.exports.booksSchema = mongoose.model('Book', booksSchema)
+module.exports.Book = mongoose.model('book', booksSchema)
